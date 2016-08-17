@@ -149,7 +149,12 @@ static NSString *identifer = @"CalendarCell";
         if (self.selectedIndexPath != nil) {
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row];
         } else {
-            self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],[NSDate day:self.date]];
+            if ([NSDate month:[NSDate date]] == [NSDate month:self.date]) {
+                self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],[NSDate day:self.date]];
+            } else {
+                self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%d",(long)[NSDate year:self.date],(long)[NSDate month:self.date],1];
+            }
+            
         }
     }
     return cell;
