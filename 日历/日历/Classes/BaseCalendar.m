@@ -139,7 +139,8 @@ static NSString *identifer = @"CalendarCell";
             if (indexPath.row == [NSDate day:self.date]) {
                 cell.label.backgroundColor = [UIColor redColor];
             }
-        }else if (indexPath == self.selectedIndexPath) {
+        }
+        if (indexPath == self.selectedIndexPath) {
             cell.label.backgroundColor = [UIColor yellowColor];
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],indexPath.row];
         }
