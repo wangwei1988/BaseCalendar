@@ -54,6 +54,7 @@ static NSString *identifer = @"CalendarCell";
     [self.backBtn buttonClick:^{
         NSLog(@"上一月");
         self.date = [NSDate lastMonth:self.date];
+        self.selectedIndexPath = nil;
         [self.CalendarView reloadData];
         CATransition *animation = [CATransition animation];
         animation.duration = 0.7f;
@@ -70,8 +71,9 @@ static NSString *identifer = @"CalendarCell";
     [self.nextBtn buttonClick:^{
         NSLog(@"下一月");
         self.date = [NSDate nextMonth:self.date];
+        self.selectedIndexPath = nil;
         [self.CalendarView reloadData];
-
+        
         CATransition *animation = [CATransition animation];
         animation.duration = 0.7f;
         animation.type = @"pageCurl";//@"pageUnCurl"---pageUnCurl
