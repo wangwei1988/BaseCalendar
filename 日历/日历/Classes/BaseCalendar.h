@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BaseCalendarDelegate <NSObject>
+
+-(void)currentSelectedDate:(NSString *)selectedDate;
+
+@end
+
 @interface BaseCalendar : UIView
 @property (nonatomic,strong) NSDate *date;
+
+
+@property (nonatomic,weak) id <BaseCalendarDelegate> delegate;
+
+
 @end

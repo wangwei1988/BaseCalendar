@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "BaseCalendar.h"
 #import "UIView+Extension.h"
-@interface ViewController ()
+@interface ViewController ()<BaseCalendarDelegate>
 
 @end
 
@@ -18,8 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     BaseCalendar *baseCalendar = [[BaseCalendar alloc]initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height - 100 )];
+    baseCalendar.delegate = self;
     baseCalendar.date = [NSDate date];
     [self.view addSubview:baseCalendar];
+}
+
+-(void)currentSelectedDate:(NSString *)selectedDate {
+    NSLog(@"%@",selectedDate);
 }
 
 @end

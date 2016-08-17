@@ -126,7 +126,7 @@ static NSString *identifer = @"CalendarCell";
     } else {
         NSInteger totalDays = [NSDate totaldaysInThisMonth:self.date];
         NSInteger firstWeekday = [NSDate firstWeekdayInThisMonth:self.date];
-        NSLog(@"%ld,%ld",totalDays,firstWeekday);
+//        NSLog(@"%ld,%ld",totalDays,firstWeekday);
         if (indexPath.row < firstWeekday) {
             cell.label.text = @"";
         } else if (indexPath.row < firstWeekday + totalDays ) {
@@ -145,17 +145,6 @@ static NSString *identifer = @"CalendarCell";
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],indexPath.row];
         }
         
-        
-        if (self.selectedIndexPath != nil) {
-            self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row];
-        } else {
-            if ([NSDate month:[NSDate date]] == [NSDate month:self.date]) {
-                self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],[NSDate day:self.date]];
-            } else {
-                self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%d",(long)[NSDate year:self.date],(long)[NSDate month:self.date],1];
-            }
-            
-        }
     }
     return cell;
 }
@@ -174,9 +163,21 @@ static NSString *identifer = @"CalendarCell";
     } else {
         return;
     }
-    
-    
     [self.CalendarView reloadData];
+    
+    if (self.selectedIndexPath != nil) {
+        self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row];
+    } else {
+        if ([NSDate month:[NSDate date]] == [NSDate month:self.date]) {
+            self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],[NSDate day:self.date]];
+        } else {
+            self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%d",(long)[NSDate year:self.date],(long)[NSDate month:self.date],1];
+        }
+        
+    }
+    if ([self.delegate respondsToSelector:@selector(currentSelectedDate:)]) {
+        [self.delegate currentSelectedDate:self.showDateLabel.text];
+    };
 }
 
 @end
