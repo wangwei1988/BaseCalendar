@@ -126,7 +126,7 @@ static NSString *identifer = @"CalendarCell";
         if (indexPath.row < firstWeekday) {
             cell.label.text = @"";
         } else if (indexPath.row < firstWeekday + totalDays ) {
-            cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+            cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.row - (firstWeekday - 1)];
         } else {
             cell.label.text = @"";
         }
