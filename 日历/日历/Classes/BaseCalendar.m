@@ -20,6 +20,8 @@
 
 @property (nonatomic,strong) UIButton *backBtn;
 @property (nonatomic,strong) UIButton *nextBtn;
+
+
 @end
 
 @implementation BaseCalendar
@@ -132,12 +134,17 @@ static NSString *identifer = @"CalendarCell";
         } else {
             cell.label.text = @"";
         }
-        if (indexPath.row == [NSDate day:self.date]) {
-            cell.label.backgroundColor = [UIColor redColor];
-        }else if (indexPath == self.selectedIndexPath) {
-            cell.label.backgroundColor = [UIColor yellowColor];
-            self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],indexPath.row];
+        
+        if ([NSDate month:[NSDate date]] == [NSDate month:self.date]) {
+            if (indexPath.row == [NSDate day:self.date]) {
+                cell.label.backgroundColor = [UIColor redColor];
+            }else if (indexPath == self.selectedIndexPath) {
+                cell.label.backgroundColor = [UIColor yellowColor];
+                self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],indexPath.row];
+            }
         }
+        
+        
         if (self.selectedIndexPath != nil) {
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row];
         } else {
