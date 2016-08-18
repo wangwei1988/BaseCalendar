@@ -7,4 +7,4 @@
 使用BaseCalendar的类 需要遵守BaseCalendarDelegate协议
 并实现以下方法
 
--(void)currentSelectedDate:(NSString *)selectedDate;
+-(void)currentSelectedDate:(NSString *)selectedDate weekDay:(NSString *)weakDay;
