@@ -144,6 +144,7 @@ static NSString *identifer = @"CalendarCell";
             cell.label.backgroundColor = [UIColor yellowColor];
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],indexPath.row];
         }
+        
         if (self.selectedIndexPath != nil) {
             self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row  - (firstWeekday - 1)];
         } else {
@@ -153,11 +154,6 @@ static NSString *identifer = @"CalendarCell";
                 self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%d",(long)[NSDate year:self.date],(long)[NSDate month:self.date],1];
             }
             
-        }
-        if (indexPath.row == 41) {
-            if ([self.delegate respondsToSelector:@selector(currentSelectedDate:)]) {
-                [self.delegate currentSelectedDate:self.showDateLabel.text];
-            };
         }
     }
     return cell;
@@ -177,6 +173,16 @@ static NSString *identifer = @"CalendarCell";
     } else {
         return;
     }
+
+
+    self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row  - (firstWeekday - 1)];
+    if ([self.delegate respondsToSelector:@selector(currentSelectedDate:)]) {
+//        [self removeFromSuperview];
+        [self.delegate currentSelectedDate:self.showDateLabel.text];
+    };
+    
+
+    
     [self.CalendarView reloadData];
     
 

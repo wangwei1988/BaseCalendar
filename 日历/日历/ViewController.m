@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BaseCalendar *baseCalendar = [[BaseCalendar alloc]initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height - 100 )];
+    BaseCalendar *baseCalendar = [[BaseCalendar alloc]initWithFrame:CGRectMake((self.view.width - 320) / 2, 100, 320 ,400 )];
     baseCalendar.delegate = self;
     baseCalendar.date = [NSDate date];
     [self.view addSubview:baseCalendar];
