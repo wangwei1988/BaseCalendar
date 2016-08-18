@@ -23,8 +23,8 @@
     [self.view addSubview:baseCalendar];
 }
 
--(void)currentSelectedDate:(NSString *)selectedDate {
-    NSLog(@"%@",selectedDate);
+-(void)currentSelectedDate:(NSString *)selectedDate weekDay:(NSString *)weakDay{
+    NSLog(@"%@,%@",selectedDate,weakDay);
 }
 
 @end

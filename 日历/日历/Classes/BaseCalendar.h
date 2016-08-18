@@ -10,7 +10,7 @@
 
 @protocol BaseCalendarDelegate <NSObject>
 
--(void)currentSelectedDate:(NSString *)selectedDate;
+-(void)currentSelectedDate:(NSString *)selectedDate weekDay:(NSString *)weakDay;
 
 @end
 

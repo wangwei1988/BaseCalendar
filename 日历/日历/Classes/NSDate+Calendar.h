@@ -18,6 +18,8 @@
 + (NSInteger)year:(NSDate *)date;
 //第一天星期几
 + (NSInteger)firstWeekdayInThisMonth:(NSDate *)date;
+//当前日期星期几
++ (NSString *)currentDayWeekday:(NSString *)dateString;
 //当前月总共天数
 + (NSInteger)totaldaysInThisMonth:(NSDate *)date;
 //上一月

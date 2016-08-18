@@ -176,9 +176,8 @@ static NSString *identifer = @"CalendarCell";
 
 
     self.showDateLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)[NSDate year:self.date],(long)[NSDate month:self.date],self.selectedIndexPath.row  - (firstWeekday - 1)];
-    if ([self.delegate respondsToSelector:@selector(currentSelectedDate:)]) {
-//        [self removeFromSuperview];
-        [self.delegate currentSelectedDate:self.showDateLabel.text];
+    if ([self.delegate respondsToSelector:@selector(currentSelectedDate:weekDay:)]) {
+        [self.delegate currentSelectedDate:self.showDateLabel.text weekDay:[NSDate currentDayWeekday:self.showDateLabel.text]];
     };
     
 
